@@ -1,0 +1,39 @@
+<!-- views/layout.ejs -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Clubhouse</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+
+  <body>
+    <nav>
+      <% if (currentUser) { %>
+      <span>Welcome, <%= currentUser.first_name %>!</span>
+      <a href="/new">New Message</a>
+      <% if (!currentUser.is_member) { %>
+      <a href="/join">Join Club</a>
+      <% } %>
+      <a href="/logout">Logout</a>
+      <% } else { %>
+      <a href="/signup">Sign Up</a>
+      <a href="/login">Login</a>
+      <% } %>
+    </nav>
+    <main>
+      <% if (infos.length > 0) { %>
+      <ul class="info-messages">
+        <% infos.forEach(info => { %>
+        <li><%= info %></li>
+        <% }) %>
+      </ul>
+      <% } %> <% if (errors.length > 0) { %>
+      <ul class="error-messages">
+        <% errors.forEach(error => { %>
+        <li><%= error %></li>
+        <% }) %>
+      </ul>
+      <% } %>
+    </main>
+  </body>
+</html>

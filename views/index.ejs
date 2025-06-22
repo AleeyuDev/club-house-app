@@ -1,0 +1,320 @@
+<section>
+  <nav
+    style="
+ 
+      gap: 1em;
+      background: linear-gradient(90deg, #007bff 60%, #6c63ff 100%);
+      color: #fff;
+      border-radius: 16px;
+      padding: 2.5em 2em 2em 2em;
+      margin-bottom: 5em;
+      box-shadow: 0 4px 24px #b3b3ff33;
+    ">
+    <% if (currentUser) { %>
+    <span>Welcome, <%= currentUser.first_name %>!</span>
+
+          
+>
+    <div style="
+    display:  flex;
+    justify-content: flex-end;
+    align-items: flex-end ;
+    gap: 1em;
+    
+    
+    
+    ">
+    <a
+    href="/new"
+    style="
+      background: #fff;
+      color: #007bff;
+      font-weight: bold;
+      padding: 0.8em 2em;
+      border-radius: 6px;
+      border: none;
+      text-decoration: none;
+      font-size: 1.1em;
+      box-shadow: 0 2px 8px #ccc;
+    "
+    >New Message</a
+  >
+  <% if (!currentUser.is_member) { %>
+  <a
+    href="/join"
+    style="
+      background: #fff;
+      color: #007bff;
+      font-weight: bold;
+      padding: 0.8em 2em;
+      border-radius: 6px;
+      border: none;
+      text-decoration: none;
+      font-size: 1.1em;
+      box-shadow: 0 2px 8px #ccc;
+    "
+    >Join Club</a
+  >
+  <% } %> <% if (!currentUser.is_admin) { %>
+  <a
+    href="/become-admin"
+    style="
+      background: #fff;
+      color: #007bff;
+      font-weight: bold;
+      padding: 0.8em 2em;
+      border-radius: 6px;
+      border: none;
+      text-decoration: none;
+      font-size: 1.1em;
+      box-shadow: 0 2px 8px #ccc;
+    "
+    >Become an admin</a
+  >
+  <% } %>
+  <a
+    href="/logout"
+    style="
+      background: #dc3545;
+      color: #fff;
+      font-weight: bold;
+      padding: 0.8em 2em;
+      border-radius: 6px;
+      border: none;
+      font-size: 1.1em;
+      margin-left: 0.5em;
+      cursor: pointer;
+      box-shadow: 0 2px 8px #ccc;
+      right: 5em;
+    "
+    >Logout</a
+  >
+  <% } else { %>
+  <a
+    href="/signup"
+    style="
+      background: #fff;
+      color: #007bff;
+      font-weight: bold;
+      padding: 0.8em 2em;
+      border-radius: 6px;
+      border: none;
+      text-decoration: none;
+      font-size: 1.1em;
+      box-shadow: 0 2px 8px #ccc;
+    "
+    >Sign Up</a
+  >
+  <a
+    href="/login"
+    style="
+      background: #fff;
+      color: #007bff;
+      font-weight: bold;
+      padding: 0.8em 2em;
+      border-radius: 6px;
+      border: none;
+      text-decoration: none;
+      font-size: 1.1em;
+      box-shadow: 0 2px 8px #ccc;
+    "
+    >Login</a
+</div>
+    <% } %>
+  </nav>
+</section>
+<div style="max-width: 900px; margin: 2em auto">
+  <!-- Hero Section -->
+  <section
+    style="
+      background: linear-gradient(90deg, #007bff 60%, #6c63ff 100%);
+      color: #fff;
+      border-radius: 16px;
+      padding: 2.5em 2em 2em 2em;
+      margin-bottom: 2.5em;
+      box-shadow: 0 4px 24px #b3b3ff33;
+    ">
+    <h1 style="font-size: 2.5em; margin-bottom: 0.3em">Welcome to ClubHouse</h1>
+    <p style="font-size: 1.2em; margin-bottom: 1.2em">
+      A private place to share your thoughts and connect with members.
+    </p>
+    <div style="display: flex; gap: 1em">
+      <% if (currentUser) { %>
+      <!-- <a href="/new" class="btn">Create a Post</a>
+      <form action="/logout" method="GET" style="display: inline">
+        <button type="submit" class="btn">Log Out</button>
+      </form> -->
+      <% } else { %>
+      <!-- <a
+        href="/login"
+        class="btn"
+        style="
+          background: #fff;
+          color: #007bff;
+          font-weight: bold;
+          padding: 0.8em 2em;
+          border-radius: 6px;
+          border: none;
+          text-decoration: none;
+          font-size: 1.1em;
+          box-shadow: 0 2px 8px #ccc;
+        "
+        >Login</a -->
+      >
+      <!-- <a
+        href="/signup"
+        class="btn"
+        style="
+          background: #fff;
+          color: #007bff;
+          font-weight: bold;
+          padding: 0.8em 2em;
+          border-radius: 6px;
+          border: none;
+          text-decoration: none;
+          font-size: 1.1em;
+          margin-left: 0.5em;
+          box-shadow: 0 2px 8px #ccc;
+        "
+        >Sign Up</a -->
+      > <% } %>
+    </div>
+  </section>
+
+  <!-- Flash Messages -->
+  <% let allErrors = []; if (typeof errors !== "undefined" && errors.length > 0)
+  { errors.forEach(function(error) { if (error.msg) { allErrors.push(error.msg);
+  } else { allErrors.push(error); } }); } if ( typeof email !== "undefined" &&
+  email !== "" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ) {
+  allErrors.push("Please enter a valid email address."); } %> <% if
+  (allErrors.length > 0) { %>
+  <div
+    class="error-messages"
+    style="
+      color: #b00;
+      background: #fee;
+      padding: 1em;
+      border-radius: 5px;
+      margin-bottom: 1em;
+    ">
+    <ul>
+      <% allErrors.forEach(function(error) { %>
+      <li><%= error %></li>
+      <% }); %>
+    </ul>
+  </div>
+  <% } %> <% if (infos && infos.length > 0) { %>
+  <div
+    class="info-messages"
+    style="
+      color: #155724;
+      background: #d4edda;
+      padding: 1em;
+      border-radius: 5px;
+      margin-bottom: 1em;
+    ">
+    <ul>
+      <% infos.forEach(function(info) { %>
+      <li><%= info %></li>
+      <% }); %>
+    </ul>
+  </div>
+  <% } %>
+
+  <!-- Messages List -->
+  <% if (messages && messages.length > 0) { %> <%
+  messages.forEach(function(message) { %>
+  <div
+    class="message-card"
+    style="
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px #ccc;
+      padding: 2em;
+      margin-bottom: 2em;
+      position: relative;
+    ">
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      ">
+      <div>
+        <h3 style="margin: 0 0 0.5em 0; font-size: 1.5em; color: #007bff">
+          <%= message.title %>
+        </h3>
+        <p style="margin: 0 0 0.5em 0; font-size: 1.1em; color: #333">
+          <%= message.content || message.body %>
+        </p>
+        <small style="color: #555">
+          Posted by
+          <strong><%= message.first_name %> <%= message.last_name %></strong>
+          <% if (message.timestamp || message.created_at) { %> on <%= new
+          Date(message.timestamp || message.created_at).toLocaleString() %> <% }
+          %>
+        </small>
+      </div>
+      <% if (currentUser && currentUser.is_admin) { %>
+      <form
+        action="/delete/<%= message.id %>"
+        method="POST"
+        style="margin-left: 1em"
+        onsubmit="return confirm('Are you sure you want to delete this message?');">
+        <button
+          type="submit"
+          class="btn"
+          style="
+            background: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 0.5em 1.2em;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+          ">
+          Delete
+        </button>
+      </form>
+      <% } %>
+    </div>
+  </div>
+  <% }); %> <% } else { %>
+  <div style="text-align: center; margin-top: 2em">
+    <h3 style="color: #888">No messages yet.</h3>
+    <% if (currentUser) { %>
+    <a
+      href="/new"
+      class="btn"
+      style="
+        color: #fff;
+        background: #007bff;
+        padding: 0.8em 2em;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: 1em;
+        display: inline-block;
+      "
+      >Post the first message</a
+    >
+    <% } else { %>
+    <a
+      href="/login"
+      class="btn"
+      style="
+        color: #fff;
+        background: #007bff;
+        padding: 0.8em 2em;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: 1em;
+        display: inline-block;
+      "
+      >Login to post a message</a
+    >
+    <% } %>
+  </div>
+  <% } %>
+</div>

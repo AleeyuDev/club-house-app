@@ -1,0 +1,93 @@
+<!-- views/new_messages.ejs -->
+<div
+  style="
+    max-width: 500px;
+    margin: 2em auto;
+    padding: 2em;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px #ccc;
+  ">
+  <h1 style="text-align: center; margin-bottom: 1.5em">Create a New Message</h1>
+
+  <% if (typeof errors !== "undefined" && errors.length > 0) { %>
+  <div
+    style="
+      color: #b00;
+      background: #fee;
+      padding: 1em;
+      border-radius: 5px;
+      margin-bottom: 1em;
+    ">
+    <ul>
+      <% errors.forEach(function(error) { %>
+      <li><%= console.log(error) %></li>
+      <% }); %>
+    </ul>
+  </div>
+  <% } %>
+
+  <form
+    action="/new"
+    method="POST"
+    style="display: flex; flex-direction: column; gap: 1em">
+    <div>
+      <label for="title" style="font-weight: bold">Title:</label>
+      <input
+        type="text"
+        name="title"
+        id="title"
+        required
+        maxlength="100"
+        placeholder="Enter a catchy title"
+        style="
+          width: 100%;
+          padding: 0.5em;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+        " />
+    </div>
+
+    <div>
+      <label for="content" style="font-weight: bold">Content:</label>
+      <textarea
+        name="content"
+        id="content"
+        required
+        rows="6"
+        maxlength="1000"
+        placeholder="Write your message here..."
+        style="
+          width: 100%;
+          padding: 0.5em;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+          resize: vertical;
+        "></textarea>
+    </div>
+
+    <div
+      style="
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      ">
+      <button
+        type="submit"
+        style="
+          background: #007bff;
+          color: #fff;
+          padding: 0.75em 2em;
+          border: none;
+          border-radius: 4px;
+          font-size: 1em;
+          cursor: pointer;
+        ">
+        Post Message
+      </button>
+      <a href="/" style="color: #007bff; text-decoration: underline"
+        >Back to Home</a
+      >
+    </div>
+  </form>
+</div>

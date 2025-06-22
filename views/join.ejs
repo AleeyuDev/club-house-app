@@ -1,0 +1,87 @@
+<!-- views/join.ejs -->
+<div
+  style="
+    max-width: 400px;
+    margin: 3em auto;
+    padding: 2em;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px #ccc;
+  ">
+  <h2 style="text-align: center; margin-bottom: 1.5em">Join the Club</h2>
+  <form
+    action="/join"
+    method="POST"
+    style="display: flex; flex-direction: column; gap: 1.2em">
+    <div>
+      <label for="passcode" style="font-weight: bold">Enter Passcode:</label>
+      <input
+        type="password"
+        id="passcode"
+        name="passcode"
+        required
+        placeholder="Enter member passcode"
+        style="
+          width: 100%;
+          padding: 0.7em;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+          margin-top: 0.5em;
+        " />
+    </div>
+    <button
+      type="submit"
+      style="
+        background: #007bff;
+        color: #fff;
+        padding: 0.75em;
+        border: none;
+        border-radius: 5px;
+        font-size: 1em;
+        cursor: pointer;
+      ">
+      Join
+    </button>
+    <a
+      href="/"
+      style="
+        text-align: center;
+        color: #007bff;
+        margin-top: 1em;
+        text-decoration: underline;
+      "
+      >Back to Home</a
+    >
+  </form>
+  <% if (typeof errors !== "undefined" && errors.length > 0) { %>
+  <div
+    style="
+      color: #b00;
+      background: #fee;
+      padding: 1em;
+      border-radius: 5px;
+      margin-top: 1.5em;
+    ">
+    <ul>
+      <% errors.forEach(function(error) { %>
+      <li><%= error %></li>
+      <% }); %>
+    </ul>
+  </div>
+  <% } %> <% if (typeof infos !== "undefined" && infos.length > 0) { %>
+  <div
+    style="
+      color: #155724;
+      background: #d4edda;
+      padding: 1em;
+      border-radius: 5px;
+      margin-top: 1.5em;
+    ">
+    <ul>
+      <% infos.forEach(function(info) { %>
+      <li><%= info %></li>
+      <% }); %>
+    </ul>
+  </div>
+  <% } %>
+</div>

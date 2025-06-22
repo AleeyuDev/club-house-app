@@ -1,0 +1,122 @@
+<div style="margin-top: 4em">
+  <form
+    action="/signup"
+    method="POST"
+    class="signup-form"
+    style="
+      max-width: 400px;
+      margin: auto;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px #ccc;
+      background: #f9f9f9;
+    ">
+    <h2 style="text-align: center">Create Your Account</h2>
+
+    <% if (typeof errors !== "undefined" && errors.length > 0) { %>
+    <div
+      class="error-messages"
+      style="
+        color: #b00;
+        background: #fee;
+        padding: 1em;
+        border-radius: 5px;
+        margin-bottom: 1em;
+      ">
+      <ul>
+        <% errors.forEach(function(error) { %>
+        <li><%= error %></li>
+        <% }); %>
+      </ul>
+    </div>
+    <% } %>
+
+    <div style="margin-bottom: 1em">
+      <label for="first_name">First Name</label>
+      <input
+        type="text"
+        id="first_name"
+        name="first_name"
+        required
+        class="form-control"
+        style="width: 100%; padding: 0.5em" />
+    </div>
+
+    <div style="margin-bottom: 1em">
+      <label for="last_name">Last Name</label>
+      <input
+        type="text"
+        id="last_name"
+        name="last_name"
+        required
+        class="form-control"
+        style="width: 100%; padding: 0.5em" />
+    </div>
+
+    <div style="margin-bottom: 1em">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        class="form-control"
+        style="width: 100%; padding: 0.5em" />
+    </div>
+
+    <div style="margin-bottom: 1em">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        required
+        minlength="6"
+        class="form-control"
+        style="width: 100%; padding: 0.5em" />
+    </div>
+
+    <div style="margin-bottom: 1em">
+      <label for="confirm_password">Confirm Password</label>
+      <input
+        type="password"
+        id="confirm_password"
+        name="confirm_password"
+        required
+        class="form-control"
+        style="width: 100%; padding: 0.5em" />
+    </div>
+
+    <div style="margin-bottom: 1em">
+      <label>
+        <input type="checkbox" name="is_admin" />
+        Register as Admin
+      </label>
+    </div>
+    <div style="margin-bottom: 1em">
+      <label>
+        <input type="checkbox" name="is_member" />
+        is Member
+      </label>
+    </div>
+
+    <button
+      type="submit"
+      class="btn"
+      style="
+        width: 100%;
+        padding: 0.75em;
+        background: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 1em;
+      ">
+      Sign Up
+    </button>
+
+    <p style="text-align: center; margin-top: 1em">
+      Already have an account? <a href="/login">Log in</a>
+    </p>
+  </form>
+</div>
