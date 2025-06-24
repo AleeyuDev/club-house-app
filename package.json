@@ -4,6 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "start": "node index.js",
     "server": "nodemon index.js",
     "client": "cd client && npm start"
   },
