@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "server": "nodemon server.js",
+    "server": "nodemon index.js",
     "client": "cd client && npm start"
   },
   "keywords": [],
