@@ -17,12 +17,8 @@ function ensureAuthenticated(req, res, next) {
 
 // Middleware to check admin
 
-router.get("/", (req, res) => {
-  res.render("index"); // or similar
-});
 
-
-router.get("/",    async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const result = await pool.query(`
       SELECT messages.*, users.first_name, users.last_name
@@ -30,9 +26,9 @@ router.get("/",    async (req, res) => {
       JOIN users ON messages.user_id = users.id
       ORDER BY messages.created_at DESC
     `);
-    res.render("index",{ messages: result.rows });
+    res.render("index", { messages: result.rows });
   } catch (err) {
-    console.error("Error in / route:", err); // Add this line
+    console.error("Error in / route:", err);
     res.status(500).send("Server Error");
   }
 });

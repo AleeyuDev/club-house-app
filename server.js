@@ -29,9 +29,6 @@ app.use(
   })
 );
 
-// app.use((req, res) => {
-//   res.status(404).render("404"); // or res.send("Not Found");
-// });
 
 app.use(flash());
 
@@ -108,6 +105,14 @@ app.use((req, res, next) => {
 app.use("/", indexRouter);
 app.use("/", authRouter);
 app.use("/", messagesRouter);
+
+// 404 handler LAST
+app.use((req, res) => {
+  res.status(404).render("404"); // or res.send("Not Found");
+});
+
+
+
 
 // Start Server
 const PORT = process.env.PORT || 3000;
