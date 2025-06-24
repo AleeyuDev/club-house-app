@@ -25,7 +25,7 @@ router.get("/",    async (req, res) => {
       SELECT messages.*, users.first_name, users.last_name
       FROM messages
       JOIN users ON messages.user_id = users.id
-      ORDER BY messages.timestamp DESC
+      ORDER BY messages.created_at DESC
     `);
     res.render("index",{ messages: result.rows });
   } catch (err) {

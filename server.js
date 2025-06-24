@@ -38,16 +38,20 @@ app.use(passport.session());
 passport.use(
   new LocalStrategy(
     { usernameField: "email" },
+
     async (email, password, done) => {
       try {
         const res = await pool.query("SELECT * FROM users WHERE email = $1", [
           email,
         ]);
+
         if (res.rows.length === 0) {
           // req.flash("error", "Incorrect email")
           return done(null, false, { message: "email doesn`t exits." });
         }
+
         const user = res.rows[0];
+
         const match = await bcrypt.compare(password, user.password);
         if (match) {
           // req.flash("info", "Incorrect password");

@@ -30,7 +30,8 @@ router.post(
       .withMessage("Password must be at least 6 characters."),
     body("confirm_password").custom((value, { req }) => {
       if (value !== req.body.password) {
-        throw new Error("Passwords do not match.");
+        // throw new Error("Passwords do not match.");
+        message: req.flash("error", "Password do not match");
       }
       return true;
     }),
@@ -70,7 +71,7 @@ router.get("/login", (req, res) => {
     user: req.user,
     // errors: req.flash("error").map((msg) => ({ msg })),
     // infos: req.flash("info").map((msg) => ({ msg })),
-    // messages: req.flash("error", "username or password is incorrect"),
+    messages: req.flash("error", "username or password is incorrect"),
   });
 });
 

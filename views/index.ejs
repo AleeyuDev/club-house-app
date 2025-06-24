@@ -249,10 +249,14 @@
         </p>
         <small style="color: #555">
           Posted by
-          <strong><%= message.first_name %> <%= message.last_name %></strong>
-          <% if (message.timestamp || message.created_at) { %> on <%= new
-          Date(message.timestamp || message.created_at).toLocaleString() %> <% }
-          %>
+          <% if (currentUser && (currentUser.is_member || currentUser.is_admin)) { %>
+            <strong><%= message.first_name %> <%= message.last_name %></strong>
+          <% } else { %>
+            <strong>Anonymous</strong>
+          <% } %>
+          <% if (message.timestamp || message.created_at) { %>
+            on <%= new Date(message.timestamp || message.created_at).toLocaleString() %>
+          <% } %>
         </small>
       </div>
       <% if (currentUser && currentUser.is_admin) { %>
