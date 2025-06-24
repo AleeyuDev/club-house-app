@@ -22,12 +22,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
 app.use(
   session({
-    secret: process.env.SECRET,
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: { maxAge: 1000 * 60 * 60 }, // 1day
   })
 );
+
+app.use((req, res) => {
+  res.status(404).render("404"); // or res.send("Not Found");
+});
 
 app.use(flash());
 

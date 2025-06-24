@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: clubhouse-app
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm run server
+    envVars:
+      - key: DATABASE_URL
+        sync: false # Set this in the Render dashboard for security
+      - key: SESSION_SECRET
+        sync: false # Set this in the Render dashboard for security
+    autoDeploy: true
