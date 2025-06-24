@@ -17,9 +17,9 @@ function ensureAuthenticated(req, res, next) {
 
 // Middleware to check admin
 
-router.get("/", (req, res) => {
-  res.render("index"); // or similar
-});
+// router.get("/", (req, res) => {
+//   res.render("index"); // or similar
+// });
 
 
 router.get("/",    async (req, res) => {

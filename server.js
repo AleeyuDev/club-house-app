@@ -29,9 +29,9 @@ app.use(
   })
 );
 
-app.use((req, res) => {
-  res.status(404).render("404"); // or res.send("Not Found");
-});
+// app.use((req, res) => {
+//   res.status(404).render("404"); // or res.send("Not Found");
+// });
 
 app.use(flash());
 
