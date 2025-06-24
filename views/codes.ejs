@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Secret Codes</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 2em;
+      }
+      .code-box {
+        background: #f9f9f9;
+        border-radius: 8px;
+        padding: 2em;
+        max-width: 400px;
+        margin: auto;
+        box-shadow: 0 2px 8px #ccc;
+      }
+      h2 {
+        color: #007bff;
+      }
+      .code-label {
+        font-weight: bold;
+      }
+      .code-value {
+        font-size: 1.5em;
+        color: #333;
+        margin-bottom: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="code-box">
+      <h2>Secret Codes</h2>
+      <div>
+        <span class="code-label">Member Code:</span>
+        <div class="code-value"><%= memberCode %></div>
+      </div>
+      <div>
+        <span class="code-label">Admin Code:</span>
+        <div class="code-value"><%= adminCode %></div>
+      </div>
+      <a href="/" style="color: #007bff">Back to Home</a>
+    </div>
+  </body>
+</html>

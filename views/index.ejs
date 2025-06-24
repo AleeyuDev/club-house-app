@@ -1,7 +1,11 @@
 <section>
+  <!-- Responsive Navbar -->
   <nav
     style="
- 
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
       gap: 1em;
       background: linear-gradient(90deg, #007bff 60%, #6c63ff 100%);
       color: #fff;
@@ -9,118 +13,123 @@
       padding: 2.5em 2em 2em 2em;
       margin-bottom: 5em;
       box-shadow: 0 4px 24px #b3b3ff33;
-    ">
-    <% if (currentUser) { %>
-    <span>Welcome, <%= currentUser.first_name %>!</span>
-
-          
->
-    <div style="
-    display:  flex;
-    justify-content: flex-end;
-    align-items: flex-end ;
-    gap: 1em;
-    
-    
-    
-    ">
-    <a
-    href="/new"
-    style="
-      background: #fff;
-      color: #007bff;
-      font-weight: bold;
-      padding: 0.8em 2em;
-      border-radius: 6px;
-      border: none;
-      text-decoration: none;
-      font-size: 1.1em;
-      box-shadow: 0 2px 8px #ccc;
     "
-    >New Message</a
   >
-  <% if (!currentUser.is_member) { %>
-  <a
-    href="/join"
-    style="
-      background: #fff;
-      color: #007bff;
-      font-weight: bold;
-      padding: 0.8em 2em;
-      border-radius: 6px;
-      border: none;
-      text-decoration: none;
-      font-size: 1.1em;
-      box-shadow: 0 2px 8px #ccc;
-    "
-    >Join Club</a
-  >
-  <% } %> <% if (!currentUser.is_admin) { %>
-  <a
-    href="/become-admin"
-    style="
-      background: #fff;
-      color: #007bff;
-      font-weight: bold;
-      padding: 0.8em 2em;
-      border-radius: 6px;
-      border: none;
-      text-decoration: none;
-      font-size: 1.1em;
-      box-shadow: 0 2px 8px #ccc;
-    "
-    >Become an admin</a
-  >
-  <% } %>
-  <a
-    href="/logout"
-    style="
-      background: #dc3545;
-      color: #fff;
-      font-weight: bold;
-      padding: 0.8em 2em;
-      border-radius: 6px;
-      border: none;
-      font-size: 1.1em;
-      margin-left: 0.5em;
-      cursor: pointer;
-      box-shadow: 0 2px 8px #ccc;
-      right: 5em;
-    "
-    >Logout</a
-  >
-  <% } else { %>
-  <a
-    href="/signup"
-    style="
-      background: #fff;
-      color: #007bff;
-      font-weight: bold;
-      padding: 0.8em 2em;
-      border-radius: 6px;
-      border: none;
-      text-decoration: none;
-      font-size: 1.1em;
-      box-shadow: 0 2px 8px #ccc;
-    "
-    >Sign Up</a
-  >
-  <a
-    href="/login"
-    style="
-      background: #fff;
-      color: #007bff;
-      font-weight: bold;
-      padding: 0.8em 2em;
-      border-radius: 6px;
-      border: none;
-      text-decoration: none;
-      font-size: 1.1em;
-      box-shadow: 0 2px 8px #ccc;
-    "
-    >Login</a
-</div>
-    <% } %>
+    <div style="font-size: 1.2em;">
+      <% if (currentUser) { %>
+        Welcome, <%= currentUser.first_name %>!
+      <% } else { %>
+        Welcome to ClubHouse!
+      <% } %>
+    </div>
+    <div
+      style="
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1em;
+        align-items: center;
+        justify-content: flex-end;
+      "
+    >
+      <% if (currentUser) { %>
+        <a
+          href="/new"
+          style="
+            background: #fff;
+            color: #007bff;
+            font-weight: bold;
+            padding: 0.8em 2em;
+            border-radius: 6px;
+            border: none;
+            text-decoration: none;
+            font-size: 1.1em;
+            box-shadow: 0 2px 8px #ccc;
+          "
+          >New Message</a
+        >
+        <% if (!currentUser.is_member) { %>
+          <a
+            href="/join"
+            style="
+              background: #fff;
+              color: #007bff;
+              font-weight: bold;
+              padding: 0.8em 2em;
+              border-radius: 6px;
+              border: none;
+              text-decoration: none;
+              font-size: 1.1em;
+              box-shadow: 0 2px 8px #ccc;
+            "
+            >Join Club</a
+          >
+        <% } %>
+        <% if (!currentUser.is_admin) { %>
+          <a
+            href="/become-admin"
+            style="
+              background: #fff;
+              color: #007bff;
+              font-weight: bold;
+              padding: 0.8em 2em;
+              border-radius: 6px;
+              border: none;
+              text-decoration: none;
+              font-size: 1.1em;
+              box-shadow: 0 2px 8px #ccc;
+            "
+            >Become an admin</a
+          >
+        <% } %>
+        <a
+          href="/logout"
+          style="
+            background: #dc3545;
+            color: #fff;
+            font-weight: bold;
+            padding: 0.8em 2em;
+            border-radius: 6px;
+            border: none;
+            font-size: 1.1em;
+            margin-left: 0.5em;
+            cursor: pointer;
+            box-shadow: 0 2px 8px #ccc;
+          "
+          >Logout</a
+        >
+      <% } else { %>
+        <a
+          href="/signup"
+          style="
+            background: #fff;
+            color: #007bff;
+            font-weight: bold;
+            padding: 0.8em 2em;
+            border-radius: 6px;
+            border: none;
+            text-decoration: none;
+            font-size: 1.1em;
+            box-shadow: 0 2px 8px #ccc;
+          "
+          >Sign Up</a
+        >
+        <a
+          href="/login"
+          style="
+            background: #fff;
+            color: #007bff;
+            font-weight: bold;
+            padding: 0.8em 2em;
+            border-radius: 6px;
+            border: none;
+            text-decoration: none;
+            font-size: 1.1em;
+            box-shadow: 0 2px 8px #ccc;
+          "
+          >Login</a
+        >
+      <% } %>
+    </div>
   </nav>
 </section>
 <div style="max-width: 900px; margin: 2em auto">

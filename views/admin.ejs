@@ -31,7 +31,8 @@
       ">
       <%= messages.error %>
     </div>
-    <% } %> <% if (messages.info) { %>
+    <% } %>
+    <% if (messages.info) { %>
     <div
       style="
         color: #4caf50;
@@ -87,6 +88,27 @@
       </button>
     </form>
 
+    <div style="margin-top: 1.5em; text-align: center;">
+      <span style="color: #555;">Don't have the secret code?</span>
+      <a
+        href="/codes"
+        style="
+          display: inline-block;
+          margin-left: 0.5em;
+          background: #fff;
+          color: #007bff;
+          border: 1px solid #007bff;
+          border-radius: 5px;
+          padding: 0.5em 1em;
+          text-decoration: none;
+          font-weight: bold;
+          transition: background 0.2s, color 0.2s;
+        "
+        onmouseover="this.style.background='#007bff';this.style.color='#fff';"
+        onmouseout="this.style.background='#fff';this.style.color='#007bff';"
+      >Get the Secret Code</a>
+    </div>
+
     <a
       href="/"
       style="
@@ -98,5 +120,6 @@
       "
       >Go back</a
     >
+
   </body>
 </html>

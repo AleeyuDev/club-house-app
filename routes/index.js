@@ -15,6 +15,19 @@ function ensureAuthenticated(req, res, next) {
 }
 
 
+
+
+
+
+
+
+router.get("/codes", ensureAuthenticated, (req, res) => {
+  res.render("codes", {
+    adminCode: process.env.ADMIN_CODE,
+    memberCode: process.env.MEMBER_CODE || "Not set",
+  });
+});
+
 // Middleware to check admin
 
 
