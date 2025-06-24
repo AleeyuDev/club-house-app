@@ -14,7 +14,7 @@ A modern Node.js/Express membership club application featuring authentication, P
 - PostgreSQL database integration (`pg`)
 - Clean, server-side rendered UI with EJS
 - Role-based access (admin/member)
-- Ready for deployment on Vercel or any Node.js platform
+- Ready for deployment on [Render](https://render.com/) or any Node.js platform
 
 ---
 
