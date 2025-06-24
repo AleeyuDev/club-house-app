@@ -31,7 +31,7 @@ A modern Node.js/Express membership club application featuring authentication, P
 1. **Clone the repository:**
 
    ```sh
-   git clone https://github.com/AleeyuDev/clube-house-app.git
+   git clone https://github.com/AleeyuDev/club-house-app.git
    cd clubhouse
    ```
 
